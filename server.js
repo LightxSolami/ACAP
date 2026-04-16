@@ -133,16 +133,18 @@ app.get('/api/signals-stats', (req, res) => {
   }
 });
 
-// Public market data endpoint (no auth)
+// Public market data endpoint (supports both Binance and DexScreener)
 app.get('/api/market-data/:symbol?', async (req, res) => {
   try {
     const symbol = (req.params.symbol || 'BTCUSDT').toUpperCase();
     const interval = req.query.interval || '1h';
-    const data = await binance.getMarketData(symbol, interval);
+    
+    // Use multi-chain handler that supports both Binance and DexScreener
+    const data = await binance.getMarketDataMultichain(symbol, interval);
     res.json(data);
   } catch (error) {
-    logger.error('Market data error', { error: error.message });
-    res.status(500).json({ error: 'Failed to fetch market data' });
+    logger.error('Market data error', { error: error.message, symbol: symbol });
+    res.status(500).json({ error: 'Failed to fetch market data', message: error.message });
   }
 });
 

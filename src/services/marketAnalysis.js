@@ -1,4 +1,4 @@
-const { getMarketData } = require('./binance');
+const { getMarketDataMultichain } = require('./binance');
 const claudeService = require('./claude');
 const logger = require('./logger');
 
@@ -239,7 +239,7 @@ function calculateIndicators(klines) {
 
 async function askClaudeAboutMarket(question, symbol = 'BTCUSDT') {
   try {
-    const marketData = await getMarketData(symbol);
+    const marketData = await getMarketDataMultichain(symbol);
     const indicators = calculateIndicators(marketData.klines);
 
     // Check if user is asking about entry points

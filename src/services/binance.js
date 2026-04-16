@@ -11,7 +11,7 @@ function parseTokenSymbol(symbol) {
   // Format: "chain:TOKEN" = DexScreener, "TOKENUSDT" = Binance
   if (symbol.includes(':')) {
     const [chain, token] = symbol.split(':');
-    return { type: 'dex', chain, token, symbol };
+    return { type: 'dex', chain: chain.toLowerCase(), token: token.toUpperCase(), symbol };
   }
   return { type: 'binance', symbol };
 }
