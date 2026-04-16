@@ -1,0 +1,14 @@
+node_modules
+logs
+*.log
+.git
+.env
+.env.local
+test-market.sh
+test.sh
+ask-claude-guide.sh
+claude-examples.sh
+demo.sh
+.gitignore
+README.md
+API_ERROR_FIX.md

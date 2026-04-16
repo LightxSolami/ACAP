@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "server.js"
+    }
+  ],
+  "env": {
+    "GROQ_API_KEY": "@groq_api_key",
+    "GROQ_API_KEY2": "@groq_api_key2",
+    "ANTHROPIC_API_KEY": "@anthropic_api_key",
+    "BINANCE_API_KEY": "@binance_api_key",
+    "BINANCE_API_SECRET": "@binance_api_secret",
+    "WEBHOOK_SECRET": "@webhook_secret",
+    "API_KEY": "@api_key",
+    "PORT": "3000",
+    "NODE_ENV": "production"
+  }
+}
